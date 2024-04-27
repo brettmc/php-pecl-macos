@@ -1,0 +1,24 @@
+name: macos build
+
+on:
+  push:
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Docs: https://github.com/shivammathur/setup-php
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+
+      - name: foo
+        run: |
+          pecl -v
+          phpize -v
+          php-config -v
+          echo $PHPIZE_DEPS
